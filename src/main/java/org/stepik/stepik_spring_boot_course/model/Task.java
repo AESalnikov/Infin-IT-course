@@ -2,14 +2,12 @@ package org.stepik.stepik_spring_boot_course.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "task")
 public class Task {
 
     @Id
@@ -21,5 +19,8 @@ public class Task {
     private String description;
 
     private boolean done;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
 }
